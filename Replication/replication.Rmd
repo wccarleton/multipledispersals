@@ -1,6 +1,6 @@
 ---
 title: "Replication Document"
-output: md_document
+output: pdf_document
 ---
 
 This document can be used to replicate the quantitative lithic analyses presented in the paper "Multiple hominin dispersals into Southwest Asia over the last 400,000 years" by Groucutt et al. [2020](http://DOI). All analyses were conducted in R.

@@ -30,13 +30,13 @@ Palaeolithic data look like this:
 
     head(LP)
 
-    ##    ID Assemblage N..scars Flaking.Length Width.at.Midpoint Proximal.Width
-    ## 1  14  KAM-4 A.D        3          31.33             21.50          21.29
-    ## 2  40  KAM-4 A.D        5          38.03             34.17          31.96
-    ## 3  58  KAM-4 A.D        4          45.94             35.65          32.32
-    ## 4  59  KAM-4 A.D        5          57.07             34.42          34.79
-    ## 5  61  KAM-4 A.D        3          38.96             25.45          28.52
-    ## 6 108  KAM-4 A.D        4          45.97             30.32          31.99
+    ##   Assemblage  ID N..scars Flaking.Length Width.at.Midpoint Proximal.Width
+    ## 1  KAM-4 A.E  14        3          31.33             21.50          21.29
+    ## 2  KAM-4 A.E  40        5          38.03             34.17          31.96
+    ## 3  KAM-4 A.E  58        4          45.94             35.65          32.32
+    ## 4  KAM-4 A.E  59        5          57.07             34.42          34.79
+    ## 5  KAM-4 A.E  61        3          38.96             25.45          28.52
+    ## 6  KAM-4 A.E 108        4          45.97             30.32          31.99
     ##   Distal.Width Thickness.at.midpoint Platform.Width Platform.Thickness
     ## 1        12.76                  5.76          18.05               4.87
     ## 2        23.17                  7.95          26.32               4.47
@@ -51,12 +51,12 @@ The data from the transition between Marine Isotope Stage 6 and 7
     head(MIS67)
 
     ##   Assemblage   ID N..scars Flaking.Length Width.at.Midpoint Proximal.Width
-    ## 1  KAM-4 A.C   61        6          46.27             41.22          25.09
-    ## 2  KAM-4 A.C 5031        4          52.39             39.74          22.64
-    ## 3  KAM-4 A.C   77        8          34.08             43.92          23.57
-    ## 4  KAM-4 A.C 1427        4          41.68             24.16          24.01
-    ## 5  KAM-4 A.C 1431        5          23.78             24.05          16.64
-    ## 6  KAM-4 A.C 1455        3          30.16             32.35          28.43
+    ## 1    KAM-4-C   61        6          46.27             41.22          25.09
+    ## 2    KAM-4-C 5031        4          52.39             39.74          22.64
+    ## 3    KAM-4-C   77        8          34.08             43.92          23.57
+    ## 4    KAM-4-C 1427        4          41.68             24.16          24.01
+    ## 5    KAM-4-C 1431        5          23.78             24.05          16.64
+    ## 6    KAM-4-C 1455        3          30.16             32.35          28.43
     ##   Distal.Width Thickness.at.midpoint Platform.Width Platform.Thickness
     ## 1        38.77                  7.95          25.18               3.34
     ## 2        27.48                  7.99          19.28               7.45
