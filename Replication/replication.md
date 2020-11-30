@@ -145,6 +145,64 @@ Then, we can perform the simple PCA on the relevant lithic variables,
                 center = T,
                 scale = T)
 
+We can then look at the loadings tables to see how the variables each
+correlate with the extracted components:
+
+    pca_MIS67
+
+    ## Standard deviations (1, .., p=8):
+    ## [1] 2.0011960 1.1348036 1.0049351 0.7980139 0.6561803 0.5683053 0.4131356
+    ## [8] 0.3694453
+    ## 
+    ## Rotation (n x k) = (8 x 8):
+    ##                              PC1         PC2         PC3           PC4
+    ## N..scars              -0.1058251 -0.39746054 -0.83309126  0.0384716968
+    ## Flaking.Length        -0.2716468  0.59598817 -0.36794310  0.0842223507
+    ## Width.at.Midpoint     -0.4406385  0.03718445 -0.11629804  0.1711988731
+    ## Proximal.Width        -0.4203641 -0.06395559  0.08578626  0.5259180120
+    ## Distal.Width          -0.2461758 -0.67761951  0.16768726 -0.0008845973
+    ## Thickness.at.midpoint -0.3901399  0.10314382 -0.07125931 -0.5906260781
+    ## Platform.Width        -0.4203846  0.09235265  0.30097262  0.2629855791
+    ## Platform.Thickness    -0.3931995 -0.05490312  0.16096859 -0.5172294977
+    ##                               PC5          PC6         PC7         PC8
+    ## N..scars              -0.32384544  0.038105596  0.09084923  0.14395680
+    ## Flaking.Length         0.32673335  0.229091300  0.42398898 -0.29920965
+    ## Width.at.Midpoint      0.50918830 -0.023858599 -0.48401857  0.51720870
+    ## Proximal.Width        -0.29613546 -0.019801464 -0.36564977 -0.55988086
+    ## Distal.Width           0.48948292  0.002214711  0.39833865 -0.23202878
+    ## Thickness.at.midpoint -0.06436812 -0.663712162 -0.06261620 -0.18616461
+    ## Platform.Width        -0.38311201 -0.147983442  0.51602374  0.46909211
+    ## Platform.Thickness    -0.22558571  0.694756052 -0.12300839  0.01538124
+
+    pca_LP
+
+    ## Standard deviations (1, .., p=8):
+    ## [1] 1.9996583 1.1776678 0.8742895 0.7786343 0.7233013 0.5773857 0.5039168
+    ## [8] 0.3651587
+    ## 
+    ## Rotation (n x k) = (8 x 8):
+    ##                             PC1         PC2         PC3         PC4         PC5
+    ## N..scars              0.1590189  0.61961998 -0.29015781  0.67459897 -0.22150927
+    ## Flaking.Length        0.3029657 -0.28228962 -0.76499848 -0.08123662  0.19863697
+    ## Width.at.Midpoint     0.4275462  0.09095345 -0.19931229 -0.25273546 -0.07998487
+    ## Proximal.Width        0.4208977 -0.29799462  0.07430390  0.02886084 -0.39638989
+    ## Distal.Width          0.3027166  0.47334148  0.20144533 -0.53300155 -0.33431170
+    ## Thickness.at.midpoint 0.4061573  0.15930225  0.04942317 -0.09537377  0.42950637
+    ## Platform.Width        0.3526375 -0.43305342  0.27457724  0.35384812 -0.33255125
+    ## Platform.Thickness    0.3768552  0.04843245  0.40856307  0.23497529  0.58405831
+    ##                               PC6         PC7         PC8
+    ## N..scars               0.02229839 -0.02255268 -0.03790208
+    ## Flaking.Length        -0.12335312 -0.41861468  0.08240988
+    ## Width.at.Midpoint     -0.34692688  0.75028123  0.12511328
+    ## Proximal.Width         0.16461594 -0.01750473 -0.73699426
+    ## Distal.Width          -0.10273428 -0.46387180  0.14880830
+    ## Thickness.at.midpoint  0.76776004  0.11326691  0.10658168
+    ## Platform.Width         0.04208609 -0.07370184  0.60804346
+    ## Platform.Thickness    -0.48481860 -0.16609147 -0.17244640
+
+Next, we can extract PC scores for the original observations (project
+the data onto the component axis):
+
     LP_scores <- cbind(
                     LP[,c(1:2)],
                     pca_LP$x)

@@ -1,6 +1,6 @@
 ---
 title: "Replication Document"
-output: pdf_document
+output: md_document
 ---
 
 This document can be used to replicate the quantitative lithic analyses presented in the paper "Multiple hominin dispersals into Southwest Asia over the last 400,000 years" by Groucutt et al. [2020](http://DOI). All analyses were conducted in R.
@@ -66,7 +66,18 @@ pca_LP <- prcomp(
             retx = T,
             center = T,
             scale = T)
+```
+We can then look at the loadings tables to see how the variables each correlate with the extracted components:
 
+```{r}
+pca_MIS67
+
+pca_LP
+```
+
+Next, we can extract PC scores for the original observations (project the data onto the component axis):
+
+```{r}
 LP_scores <- cbind(
                 LP[,c(1:2)],
                 pca_LP$x)
