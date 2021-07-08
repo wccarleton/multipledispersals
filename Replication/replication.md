@@ -46,7 +46,7 @@ Palaeolithic data look like this:
     ## 6         3.44                  7.84          29.78               8.89
 
 The data from the transition between Marine Isotope Stage 6 and 7
-(MIS67) look lke this:
+(MIS67) look like this:
 
     head(MIS67)
 
@@ -64,6 +64,46 @@ The data from the transition between Marine Isotope Stage 6 and 7
     ## 4        18.35                  7.18          21.56               5.87
     ## 5        14.62                  6.81          19.06               3.27
     ## 6        26.15                  7.04          26.55               4.88
+
+A summary of sample sizes for the two data sets and each individual site
+are as follows.
+
+Samples sizes by data set (time-period):
+
+    sample_size_period <- cbind(c("LP","MIS67"),c(dim(LP)[1],dim(MIS67)[1]))
+    sample_size_period
+
+    ##      [,1]    [,2] 
+    ## [1,] "LP"    "404"
+    ## [2,] "MIS67" "92"
+
+Sample sizes by assemblage:
+
+    assemblage_n <- table(LP$Assemblage)
+    sample_size_assemblage <- data.frame(Assemblage = names(assemblage_n),
+                                    n = as.numeric(assemblage_n),
+                                    period = "LP")
+    assemblage_n <- table(MIS67$Assemblage)
+    sample_size_assemblage <- rbind(sample_size_assemblage,
+                                data.frame(Assemblage = names(assemblage_n),
+                                            n = as.numeric(assemblage_n),
+                                            period = "MIS67"))
+    sample_size_assemblage
+
+    ##    Assemblage  n period
+    ## 1       ANW-3 50     LP
+    ## 2         BNS 32     LP
+    ## 3       JSM-1 36     LP
+    ## 4   KAM-4 A.D 39     LP
+    ## 5   KAM-4 A.E 14     LP
+    ## 6    Kebara X 50     LP
+    ## 7      MDF-61 50     LP
+    ## 8  Qafzeh XIX 50     LP
+    ## 9   Tor Faraj 50     LP
+    ## 10      Wusta 33     LP
+    ## 11        AHS 45  MIS67
+    ## 12    KAM-4-C 21  MIS67
+    ## 13    Misliya 26  MIS67
 
 PrePCA tests
 ============
@@ -219,40 +259,65 @@ will contain the results for the analysis of the LP data,
 
     sample_name <- "LP"
 
+    sample_sizes_LP <- subset(sample_size_assemblage, period == "LP")
+    sample_sizes_LP$label <- paste("n = ",sample_sizes_LP$n,sep="")
+
     p1 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
-            mapping = aes(Assemblage,PC1,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            mapping = aes(Assemblage, PC1, group = Assemblage)) +
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                        fill = "grey",
+                        alpha = 0.8,
+                        outlier.shape = NA) +
+            geom_text(data = sample_sizes_LP,
+                mapping = aes(x = 1:10, y = 7, label = label),
+                size = 3,
+                family = "Times") +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_blank(),
                 axis.title.x = element_blank())
 
     p2 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
-            mapping = aes(Assemblage,PC2,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            mapping = aes(Assemblage, PC2, group = Assemblage)) +
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                          fill = "grey",
+                          alpha = 0.8,
+                          outlier.shape = NA) +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_blank(),
                 axis.title.x = element_blank())
 
     p3 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
-            mapping = aes(Assemblage,PC3,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            mapping = aes(Assemblage, PC3, group = Assemblage)) +
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                          fill = "grey",
+                          alpha = 0.8,
+                          outlier.shape = NA) +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_text(size=8),
                 axis.title.x = element_blank())
 
     fig <- ggarrange(p1,p2,p3,
-             ncol=1,
-             nrow=3,
-             align="v")
+                ncol=1,
+                nrow=3,
+                align="v")
 
     annotate_figure(fig,
                    top = text_grob("PCA Score Box Plots\nLP",
@@ -266,12 +331,25 @@ The second plot contains the results pertaining to the MIS67 data,
 
     sample_name <- "MIS67"
 
+    sample_sizes_MIS67 <- subset(sample_size_assemblage, period == "MIS67")
+    sample_sizes_MIS67$label <- paste("n = ",sample_sizes_MIS67$n,sep="")
+
     p1 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC1,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                        fill = "grey",
+                        alpha = 0.8,
+                        outlier.shape = NA) +
+            geom_text(data = sample_sizes_MIS67,
+                    mapping = aes(x = 1:3, y = 7, label = label),
+                    size = 3,
+                    family = "Times") +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_blank(),
                 axis.title.x = element_blank())
@@ -279,9 +357,15 @@ The second plot contains the results pertaining to the MIS67 data,
     p2 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC2,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                        fill = "grey",
+                        alpha = 0.8,
+                        outlier.shape = NA) +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_blank(),
                 axis.title.x = element_blank())
@@ -289,17 +373,23 @@ The second plot contains the results pertaining to the MIS67 data,
     p3 <- ggplot(
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC3,group = Assemblage)) +
-          geom_boxplot(colour="darkgrey",fill="grey",alpha=0.8) +
-          theme_minimal() +
-          theme(text = element_text(family="Times", size=12),
+            geom_jitter(width = 0.15,
+                          alpha = 0.5,
+                          size = 0.5) +
+            geom_boxplot(colour = "darkgrey",
+                        fill = "grey",
+                        alpha = 0.8,
+                        outlier.shape = NA) +
+            theme_minimal() +
+            theme(text = element_text(family="Times", size=12),
                 plot.title = element_text(face="bold",hjust=0.5,size=15),
                 axis.text.x = element_text(size=8),
                 axis.title.x = element_blank())
 
     fig <- ggarrange(p1,p2,p3,
-             ncol=1,
-             nrow=3,
-             align="v")
+                ncol=1,
+                nrow=3,
+                align="v")
 
     annotate_figure(fig,
                    top = text_grob("PCA Score Box Plots\nMIS67",
