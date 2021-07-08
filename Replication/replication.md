@@ -15,6 +15,14 @@ results.
 
     library(psych)
     library(ggplot2)
+
+    ## 
+    ## Attaching package: 'ggplot2'
+
+    ## The following objects are masked from 'package:psych':
+    ## 
+    ##     %+%, alpha
+
     library(ggpubr)
 
 Data
@@ -266,6 +274,7 @@ will contain the results for the analysis of the LP data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage, PC1, group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -286,6 +295,7 @@ will contain the results for the analysis of the LP data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage, PC2, group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -302,6 +312,7 @@ will contain the results for the analysis of the LP data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage, PC3, group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -327,6 +338,10 @@ will contain the results for the analysis of the LP data,
 
 ![](replication_files/figure-markdown_strict/PCA%20Results%20for%20the%20LP%20data-1.png)
 
+    ggsave(filename="./pca_LP_box.pdf",device="pdf")
+
+    ## Saving 7 x 5 in image
+
 The second plot contains the results pertaining to the MIS67 data,
 
     sample_name <- "MIS67"
@@ -338,6 +353,7 @@ The second plot contains the results pertaining to the MIS67 data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC1,group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -358,6 +374,7 @@ The second plot contains the results pertaining to the MIS67 data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC2,group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -374,6 +391,7 @@ The second plot contains the results pertaining to the MIS67 data,
             data = get(paste(sample_name,"_scores",sep="")),
             mapping = aes(Assemblage,PC3,group = Assemblage)) +
             geom_jitter(width = 0.15,
+                          height = 0,
                           alpha = 0.5,
                           size = 0.5) +
             geom_boxplot(colour = "darkgrey",
@@ -398,3 +416,7 @@ The second plot contains the results pertaining to the MIS67 data,
                    fig.lab.pos = "top")
 
 ![](replication_files/figure-markdown_strict/PCA%20Results%20for%20the%20MIS67%20data-1.png)
+
+    ggsave(filename="./pca_MIS67_box.pdf",device="pdf")
+
+    ## Saving 7 x 5 in image

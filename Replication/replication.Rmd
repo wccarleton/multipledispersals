@@ -122,6 +122,7 @@ p1 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage, PC1, group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -142,6 +143,7 @@ p2 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage, PC2, group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -158,6 +160,7 @@ p3 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage, PC3, group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -180,6 +183,8 @@ annotate_figure(fig,
                                  family="Times",
                                  face="bold"),
                fig.lab.pos = "top")
+
+ggsave(filename="./pca_LP_box.pdf",device="pdf")
 ```
 
 The second plot contains the results pertaining to the MIS67 data,
@@ -194,6 +199,7 @@ p1 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage,PC1,group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -214,6 +220,7 @@ p2 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage,PC2,group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -230,6 +237,7 @@ p3 <- ggplot(
         data = get(paste(sample_name,"_scores",sep="")),
         mapping = aes(Assemblage,PC3,group = Assemblage)) +
         geom_jitter(width = 0.15,
+                      height = 0,
                       alpha = 0.5,
                       size = 0.5) +
         geom_boxplot(colour = "darkgrey",
@@ -252,4 +260,5 @@ annotate_figure(fig,
                                  family="Times",
                                  face="bold"),
                fig.lab.pos = "top")
+ggsave(filename="./pca_MIS67_box.pdf",device="pdf")
 ```
