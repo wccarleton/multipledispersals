@@ -22,7 +22,7 @@ Data
 
 Next, we load the lithic data as follows:
 
-    LP <- read.csv(file="./LP.csv")
+    LP <- read.csv(file="./LP_corrected.csv")
     MIS67 <- read.csv(file="./MIS67.csv")
 
 These data sets come with several variables (columns). The Lower
@@ -30,20 +30,20 @@ Palaeolithic data look like this:
 
     head(LP)
 
-    ##   Assemblage  ID N..scars Flaking.Length Width.at.Midpoint Proximal.Width
-    ## 1  KAM-4 A.E  14        3          31.33             21.50          21.29
-    ## 2  KAM-4 A.E  40        5          38.03             34.17          31.96
-    ## 3  KAM-4 A.E  58        4          45.94             35.65          32.32
-    ## 4  KAM-4 A.E  59        5          57.07             34.42          34.79
-    ## 5  KAM-4 A.E  61        3          38.96             25.45          28.52
-    ## 6  KAM-4 A.E 108        4          45.97             30.32          31.99
+    ##   Assemblage ID N..scars Flaking.Length Width.at.Midpoint Proximal.Width
+    ## 1      ANW-3 40        7          22.58             29.38          24.94
+    ## 2      ANW-3 19        9          26.26             20.59          20.03
+    ## 3      ANW-3 65        7          28.29             20.65          18.13
+    ## 4      ANW-3 43        8          29.56             29.88          20.97
+    ## 5      ANW-3 41        5          29.69             25.33          22.90
+    ## 6      ANW-3 36        6          30.13             32.33          20.40
     ##   Distal.Width Thickness.at.midpoint Platform.Width Platform.Thickness
-    ## 1        12.76                  5.76          18.05               4.87
-    ## 2        23.17                  7.95          26.32               4.47
-    ## 3        26.41                 12.43          29.02              12.18
-    ## 4         6.41                  9.36          36.18               7.72
-    ## 5         2.18                  5.83          29.80               5.26
-    ## 6         3.44                  7.84          29.78               8.89
+    ## 1        20.68                  8.44          28.84               8.06
+    ## 2         7.51                  6.07          19.38               6.70
+    ## 3        10.59                  4.23          17.75               5.25
+    ## 4        20.91                  5.78          22.94               6.51
+    ## 5        20.25                  3.83          20.39               6.62
+    ## 6        18.19                  5.08          19.06               6.39
 
 The data from the transition between Marine Isotope Stage 6 and 7
 (MIS67) look like this:
@@ -134,11 +134,11 @@ Olkin Measure of Sampling Adequacy":
     ## Overall MSA =  0.78
     ## MSA for each item = 
     ##              N..scars        Flaking.Length     Width.at.Midpoint 
-    ##                  0.81                  0.76                  0.85 
+    ##                  0.81                  0.76                  0.79 
     ##        Proximal.Width          Distal.Width Thickness.at.midpoint 
-    ##                  0.74                  0.72                  0.87 
+    ##                  0.77                  0.68                  0.88 
     ##        Platform.Width    Platform.Thickness 
-    ##                  0.67                  0.83
+    ##                  0.70                  0.84
 
 The other involved "Bartlett's Test for Sphericity",
 
@@ -160,7 +160,7 @@ The other involved "Bartlett's Test for Sphericity",
     ## R was not square, finding R from data
 
     ## $chisq
-    ## [1] 1673.095
+    ## [1] 1843.888
     ## 
     ## $p.value
     ## [1] 0
@@ -217,28 +217,28 @@ correlate with the extracted components:
     pca_LP
 
     ## Standard deviations (1, .., p=8):
-    ## [1] 1.9996583 1.1776678 0.8742895 0.7786343 0.7233013 0.5773857 0.5039168
-    ## [8] 0.3651587
+    ## [1] 2.0178428 1.1773289 0.8644010 0.8064170 0.7293494 0.5653055 0.4033596
+    ## [8] 0.3612335
     ## 
     ## Rotation (n x k) = (8 x 8):
-    ##                             PC1         PC2         PC3         PC4         PC5
-    ## N..scars              0.1590189  0.61961998 -0.29015781  0.67459897 -0.22150927
-    ## Flaking.Length        0.3029657 -0.28228962 -0.76499848 -0.08123662  0.19863697
-    ## Width.at.Midpoint     0.4275462  0.09095345 -0.19931229 -0.25273546 -0.07998487
-    ## Proximal.Width        0.4208977 -0.29799462  0.07430390  0.02886084 -0.39638989
-    ## Distal.Width          0.3027166  0.47334148  0.20144533 -0.53300155 -0.33431170
-    ## Thickness.at.midpoint 0.4061573  0.15930225  0.04942317 -0.09537377  0.42950637
-    ## Platform.Width        0.3526375 -0.43305342  0.27457724  0.35384812 -0.33255125
-    ## Platform.Thickness    0.3768552  0.04843245  0.40856307  0.23497529  0.58405831
-    ##                               PC6         PC7         PC8
-    ## N..scars               0.02229839 -0.02255268 -0.03790208
-    ## Flaking.Length        -0.12335312 -0.41861468  0.08240988
-    ## Width.at.Midpoint     -0.34692688  0.75028123  0.12511328
-    ## Proximal.Width         0.16461594 -0.01750473 -0.73699426
-    ## Distal.Width          -0.10273428 -0.46387180  0.14880830
-    ## Thickness.at.midpoint  0.76776004  0.11326691  0.10658168
-    ## Platform.Width         0.04208609 -0.07370184  0.60804346
-    ## Platform.Thickness    -0.48481860 -0.16609147 -0.17244640
+    ##                              PC1         PC2         PC3         PC4        PC5
+    ## N..scars              -0.1506858  0.61357309  0.33519892 -0.60142000  0.3525664
+    ## Flaking.Length        -0.2948799 -0.28902958  0.78388610  0.04503161 -0.2453629
+    ## Width.at.Midpoint     -0.4418124  0.08438272  0.09551134  0.35116462  0.0970128
+    ## Proximal.Width        -0.4210339 -0.29501239 -0.05114059  0.02462915  0.3736721
+    ## Distal.Width          -0.3103433  0.48170499 -0.18545498  0.52424414  0.1747011
+    ## Thickness.at.midpoint -0.4040555  0.16050248 -0.01950600 -0.01209198 -0.4605597
+    ## Platform.Width        -0.3508554 -0.43125688 -0.25166271 -0.29376677  0.3990992
+    ## Platform.Thickness    -0.3676935  0.04532070 -0.40412664 -0.38867198 -0.5143304
+    ##                               PC6         PC7          PC8
+    ## N..scars               0.01403546 -0.04468773  0.016139730
+    ## Flaking.Length        -0.28611075  0.26522772 -0.024380075
+    ## Width.at.Midpoint     -0.04710889 -0.73348542 -0.340015832
+    ## Proximal.Width         0.13343406 -0.08372240  0.753678495
+    ## Distal.Width          -0.27138475  0.50817369  0.003349568
+    ## Thickness.at.midpoint  0.75349077  0.16751263 -0.050272098
+    ## Platform.Width         0.03542745  0.29104273 -0.544099071
+    ## Platform.Thickness    -0.50523917 -0.10788935  0.130079890
 
 Next, we can extract PC scores for the original observations (project
 the data onto the component axis):
@@ -328,7 +328,7 @@ will contain the results for the analysis of the LP data,
                                      face="bold"),
                    fig.lab.pos = "top")
 
-![](replication_files/figure-markdown_strict/PCA%20Results%20for%20the%20LP%20data-1.png)
+![](replication_corrected_files/figure-markdown_strict/PCA%20Results%20for%20the%20LP%20data-1.png)
 
     ggsave(filename="./pca_LP_box.pdf",device="pdf")
 
@@ -407,7 +407,7 @@ The second plot contains the results pertaining to the MIS67 data,
                                      face="bold"),
                    fig.lab.pos = "top")
 
-![](replication_files/figure-markdown_strict/PCA%20Results%20for%20the%20MIS67%20data-1.png)
+![](replication_corrected_files/figure-markdown_strict/PCA%20Results%20for%20the%20MIS67%20data-1.png)
 
     ggsave(filename="./pca_MIS67_box.pdf",device="pdf")
 
