@@ -3,7 +3,7 @@ title: "Replication Document (Corrected)"
 output: md_document
 ---
 
-This document can be used to replicate the quantitative lithic analyses presented in the paper "Multiple hominin dispersals into Southwest Asia over the last 400,000 years" by Groucutt et al. [2020](http://DOI). All analyses were conducted in R.
+This document can be used to replicate the quantitative lithic analyses presented in the paper "Multiple hominin dispersals into Southwest Asia over the last 400,000 years" by Groucutt et al. [2020](http://DOI). All analyses were conducted in R. This script refers to a corrected dataset (LP_corrected.csv).
 
 #Load libraries
 First, we will load the [psych](https://cran.r-project.org/web/packages/psych/psych.pdf) library for convenient PCA-related tests, and the [ggplot2](https://ggplot2.tidyverse.org/) and [ggpubr](https://github.com/kassambara/ggpubr) libraries for plotting results.
@@ -179,12 +179,12 @@ fig <- ggarrange(p1,p2,p3,
             align="v")
 
 annotate_figure(fig,
-               top = text_grob("PCA Score Box Plots\nLP",
+               top = text_grob("PCA Score Box Plots\nLP (corrected)",
                                  family="Times",
                                  face="bold"),
                fig.lab.pos = "top")
 
-ggsave(filename="./pca_LP_box.pdf",device="pdf")
+ggsave(filename="./pca_LP_box_corrected.pdf",device="pdf")
 ```
 
 The second plot contains the results pertaining to the MIS67 data,
