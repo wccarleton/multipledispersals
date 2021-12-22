@@ -15,14 +15,6 @@ results.
 
     library(psych)
     library(ggplot2)
-
-    ## 
-    ## Attaching package: 'ggplot2'
-
-    ## The following objects are masked from 'package:psych':
-    ## 
-    ##     %+%, alpha
-
     library(ggpubr)
 
 Data

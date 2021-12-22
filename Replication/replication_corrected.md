@@ -1,7 +1,11 @@
 This document can be used to replicate the quantitative lithic analyses
 presented in the paper "Multiple hominin dispersals into Southwest Asia
 over the last 400,000 years" by Groucutt et al. [2020](http://DOI). All
+<<<<<<< HEAD
 analyses were conducted in R. It includes a corrected dataset
+=======
+analyses were conducted in R. This script refers to a corrected dataset
+>>>>>>> 9fad15b1f5de49681e19e37e46106b01eac85663
 (LP\_corrected.csv).
 
 Load libraries
@@ -16,6 +20,7 @@ results.
 
     library(psych)
     library(ggplot2)
+<<<<<<< HEAD
 
     ## 
     ## Attaching package: 'ggplot2'
@@ -24,6 +29,8 @@ results.
     ## 
     ##     %+%, alpha
 
+=======
+>>>>>>> 9fad15b1f5de49681e19e37e46106b01eac85663
     library(ggpubr)
 
 Data
@@ -337,7 +344,11 @@ will contain the results for the analysis of the LP data,
                                      face="bold"),
                    fig.lab.pos = "top")
 
+<<<<<<< HEAD
 ![](replication_corrected_files/figure-markdown_strict/PCA%20Results%20for%20the%20corrected%20LP%20data-1.png)
+=======
+![](replication_corrected_files/figure-markdown_strict/PCA%20Results%20for%20the%20LP%20data-1.png)
+>>>>>>> 9fad15b1f5de49681e19e37e46106b01eac85663
 
     ggsave(filename="./pca_LP_box_corrected.pdf",device="pdf")
 
